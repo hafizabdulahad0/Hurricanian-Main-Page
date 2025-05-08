@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 72% 29%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 142 72% 29%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 72% 29%;
+    --radius: 0.5rem;
+  }
+  
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 72% 29%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 142 72% 29%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 72% 29%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-oswald;
+  }
+}
+
+@layer components {
+  .nav-menu-item {
+    @apply px-4 py-2 hover:text-primary transition-colors duration-300;
+  }
+  
+  .service-card {
+    @apply p-6 rounded-lg shadow-md flex flex-col items-center text-center;
+  }
+  
+  .service-icon {
+    @apply mb-4;
+  }
+  
+  .service-title {
+    @apply font-semibold text-lg mb-2;
+  }
+  
+  .service-description {
+    @apply text-sm;
+  }
+  
+  .coming-soon-card {
+    @apply p-6 rounded-lg shadow-md flex flex-col items-center text-center opacity-75;
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold text-center mb-12 relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    @apply absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-green-600 rounded;
+  }
+}
+
+/* Bubble animation */
+.bubble {
+  @apply absolute rounded-full;
+  animation: float 8s ease-in-out infinite;
+}
+
+.bubble span {
+  @apply absolute rounded-full bg-green-500/30 backdrop-blur-sm border border-green-300/50;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.5;
+  }
+}
+
+/* Slider animation */
+.slide {
+  @apply absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-1000;
+}
+
+.slide.active {
+  @apply opacity-100 z-10;
+}
+
+/* Toggle switch for dark mode */
+.toggle-label {
+  @apply relative inline-block w-16 h-8 bg-gray-300 dark:bg-gray-700 rounded-full cursor-pointer transition-colors duration-300;
+}
+
+.toggle-input {
+  @apply hidden;
+}
+
+.toggle-ball {
+  @apply absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition-transform duration-300;
+}
+
+.toggle-input:checked + .toggle-label .toggle-ball {
+  @apply transform translate-x-8;
+}
+
+.toggle-icon {
+  @apply absolute top-1/2 transform -translate-y-1/2;
+}
+
+.moon {
+  @apply right-2;
+}
+
+.sun {
+  @apply left-2;
+}
+
+/* Social media icons styling */
+.social-icon {
+  @apply relative overflow-hidden flex justify-center items-center w-12 h-12 rounded-full bg-white text-gray-700 transition-all duration-300;
+}
+
+.social-icon:hover {
+  @apply text-white;
+}
+
+.social-icon .filled {
+  @apply absolute bottom-0 left-0 w-full h-0 transition-all duration-300;
+}
+
+.social-icon:hover .filled {
+  @apply h-full;
+}
+
+.social-tooltip {
+  @apply absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-white py-1 px-3 rounded opacity-0 invisible transition-all duration-300 bg-green-700;
+}
+
+.social-icon:hover + .social-tooltip {
+  @apply opacity-100 visible top-[-40px];
+}
+
+/* Whatsapp colors */
+.whatsapp-bg {
+  @apply bg-[#128c7e];
+}
+
+/* Facebook colors */
+.facebook-bg {
+  @apply bg-[#3b5998];
+}
+
+/* Instagram colors */
+.instagram-bg {
+  background: linear-gradient(45deg, #405de6, #5b51db, #b33ab4, #c135b4, #e1306c, #fd1f1f);
+}
