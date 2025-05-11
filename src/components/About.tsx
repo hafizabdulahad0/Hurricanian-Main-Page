@@ -27,8 +27,13 @@ const About = () => {
               Through our ecosystem of specialized services, we aim to empower entrepreneurs and established businesses alike with the tools they need to thrive in today's digital landscape. Our commitment to quality, security, and customer satisfaction drives everything we do.
             </p>
             <div className="flex justify-end">
-              <Button className="bg-green-600 hover:bg-green-700 transition-transform duration-300 hover:scale-105">
-                Learn More
+              <Button 
+                className="bg-green-600 hover:bg-green-700 transition-transform duration-300 hover:scale-105"
+                asChild
+              >
+                <a href="https://group.hurricanian.com/" target="_blank" rel="noopener noreferrer">
+                  Learn More
+                </a>
               </Button>
             </div>
           </div>
