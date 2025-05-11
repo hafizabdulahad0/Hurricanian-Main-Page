@@ -10,7 +10,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 142 72% 29%;
+    --primary: 151 55% 40%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -20,10 +20,11 @@
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 142 72% 29%;
+    --border: 151 55% 40%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 142 72% 29%;
+    --ring: 151 55% 40%;
     --radius: 0.5rem;
+    --tv-magenta: 300 95% 65%;
   }
   
   .dark {
@@ -33,7 +34,7 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 142 72% 29%;
+    --primary: 151 55% 40%;
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -43,9 +44,10 @@
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 142 72% 29%;
+    --border: 151 55% 40%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 142 72% 29%;
+    --ring: 151 55% 40%;
+    --tv-magenta: 300 95% 65%;
   }
 }
 
@@ -92,6 +94,18 @@
     content: '';
     @apply absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-green-600 rounded;
   }
+
+  .tv-magenta-bg {
+    @apply bg-fuchsia-500;
+  }
+
+  .tv-magenta-text {
+    @apply text-fuchsia-500;
+  }
+
+  .tv-magenta-hover {
+    @apply hover:bg-fuchsia-600;
+  }
 }
 
 /* Bubble animation */
@@ -101,7 +115,7 @@
 }
 
 .bubble span {
-  @apply absolute rounded-full bg-green-500/30 backdrop-blur-sm border border-green-300/50;
+  @apply absolute rounded-full bg-emerald-500/30 backdrop-blur-sm border border-emerald-300/50;
   animation: pulse 4s ease-in-out infinite;
 }
 
@@ -184,7 +198,7 @@
 }
 
 .social-tooltip {
-  @apply absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-white py-1 px-3 rounded opacity-0 invisible transition-all duration-300 bg-green-700;
+  @apply absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-white py-1 px-3 rounded opacity-0 invisible transition-all duration-300 bg-emerald-700;
 }
 
 .social-icon:hover + .social-tooltip {
@@ -204,4 +218,9 @@
 /* Instagram colors */
 .instagram-bg {
   background: linear-gradient(45deg, #405de6, #5b51db, #b33ab4, #c135b4, #e1306c, #fd1f1f);
+}
+
+/* Magenta TV colors */
+.tv-magenta-bg {
+  @apply bg-fuchsia-500;
 }
