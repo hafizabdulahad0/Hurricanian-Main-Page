@@ -81,14 +81,14 @@ const HeroSlider = () => {
       {/* Navigation arrows */}
       <button 
         onClick={handlePrevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-emerald-600/50 hover:bg-emerald-600/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-20"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#3EA99F]/50 hover:bg-[#3EA99F]/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-20"
         aria-label="Previous slide"
       >
         ❮
       </button>
       <button 
         onClick={handleNextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-emerald-600/50 hover:bg-emerald-600/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-20"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#3EA99F]/50 hover:bg-[#3EA99F]/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-20"
         aria-label="Next slide"
       >
         ❯

@@ -28,7 +28,7 @@ const About = () => {
             </p>
             <div className="flex justify-end">
               <Button 
-                className="bg-green-600 hover:bg-green-700 transition-transform duration-300 hover:scale-105"
+                className="bg-[#3EA99F] hover:bg-[#35908a] transition-transform duration-300 hover:scale-105"
                 asChild
               >
                 <a href="https://group.hurricanian.com/" target="_blank" rel="noopener noreferrer">

@@ -1,4 +1,3 @@
-
 import { Phone, Mail, MapPin } from 'lucide-react';
 const Contact = () => {
   return <section id="contact" className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
@@ -24,12 +23,7 @@ const Contact = () => {
                 <span className="text-gray-700 dark:text-gray-300">Email: info@hurricanian.com</span>
               </div>
               
-              <div className="flex items-center">
-                <div className="bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
-                  <MapPin className="w-5 h-5 text-green-600 dark:text-green-300" />
-                </div>
-                <span className="text-gray-700 dark:text-gray-300">123 Business Street, Digital City</span>
-              </div>
+              
             </div>
           </div>
           

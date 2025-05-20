@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-emerald-600 dark:bg-emerald-800 shadow-md sticky top-0 z-50">
+    <header className="bg-[#3EA99F] dark:bg-[#3EA99F] shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <img src="/logo.jpg" alt="Hurricanian Logo" className="h-10 w-10 rounded-full mr-2" />
@@ -35,10 +35,10 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-white hover:text-emerald-200 transition-colors duration-300">Home</Link>
-          <Link to="/#services" className="text-white hover:text-emerald-200 transition-colors duration-300">Our Services</Link>
-          <Link to="/#about" className="text-white hover:text-emerald-200 transition-colors duration-300">About Us</Link>
-          <Link to="/#contact" className="text-white hover:text-emerald-200 transition-colors duration-300">Contact Us</Link>
+          <Link to="/" className="text-white hover:text-[#e6fffd] transition-colors duration-300">Home</Link>
+          <Link to="/#services" className="text-white hover:text-[#e6fffd] transition-colors duration-300">Our Services</Link>
+          <Link to="/#about" className="text-white hover:text-[#e6fffd] transition-colors duration-300">About Us</Link>
+          <Link to="/#contact" className="text-white hover:text-[#e6fffd] transition-colors duration-300">Contact Us</Link>
         </nav>
 
         <div className="flex items-center">
@@ -71,12 +71,12 @@ const Header = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className={`md:hidden bg-emerald-600 dark:bg-emerald-800 ${isMenuOpen ? 'block' : 'hidden'}`}>
+      <div className={`md:hidden bg-[#3EA99F] dark:bg-[#3EA99F] ${isMenuOpen ? 'block' : 'hidden'}`}>
         <div className="container mx-auto px-4 py-2">
-          <Link to="/" className="block py-2 text-white hover:text-emerald-200">Home</Link>
-          <Link to="/#services" className="block py-2 text-white hover:text-emerald-200">Our Services</Link>
-          <Link to="/#about" className="block py-2 text-white hover:text-emerald-200">About Us</Link>
-          <Link to="/#contact" className="block py-2 text-white hover:text-emerald-200">Contact Us</Link>
+          <Link to="/" className="block py-2 text-white hover:text-[#e6fffd]">Home</Link>
+          <Link to="/#services" className="block py-2 text-white hover:text-[#e6fffd]">Our Services</Link>
+          <Link to="/#about" className="block py-2 text-white hover:text-[#e6fffd]">About Us</Link>
+          <Link to="/#contact" className="block py-2 text-white hover:text-[#e6fffd]">Contact Us</Link>
         </div>
       </div>
     </header>
