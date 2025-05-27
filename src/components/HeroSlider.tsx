@@ -4,28 +4,28 @@ import { useState, useEffect } from 'react';
 const slides = [
   { 
     id: 1, 
-    url: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=1200&h=400', 
-    alt: 'Digital Services Banner' 
+    url: '/lovable-uploads/1c9cc78b-0878-4fd4-af13-04ee4380a53a.png', 
+    alt: 'Hurricanian Enterprises - Property Services' 
   },
   { 
     id: 2, 
-    url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&h=400', 
-    alt: 'Tech Solutions Banner' 
+    url: '/lovable-uploads/65e2c288-1fdc-484f-8f61-5d5af426711e.png', 
+    alt: 'Hurricanian Gems - Gemstone Services' 
   },
   { 
     id: 3, 
-    url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=400', 
-    alt: 'Digital Infrastructure Banner' 
+    url: '/lovable-uploads/f9961fd6-c7b1-49f9-9b95-bc30186c72d1.png', 
+    alt: 'Hurricanian LiveStock - Animal Trading' 
   },
   { 
     id: 4, 
-    url: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&h=400', 
-    alt: 'Programming Services Banner' 
+    url: '/lovable-uploads/ee97023b-6804-4f8b-9ef0-1bd438a331cc.png', 
+    alt: 'Hurricanian Pink Salt - Salt Products' 
   },
   { 
     id: 5, 
-    url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&h=400', 
-    alt: 'Remote Work Solutions Banner' 
+    url: '/lovable-uploads/c57a64f2-cf18-41f1-9c0e-553f47530e9d.png', 
+    alt: 'Hurricanian Technologies - Tech Services' 
   },
 ];
 

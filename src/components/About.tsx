@@ -10,7 +10,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden">
             <iframe 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              src="https://www.youtube.com/embed/0lE_GR4VPy4?autoplay=1&mute=1" 
               className="w-full h-full"
               title="About Hurricanian" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

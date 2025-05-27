@@ -56,6 +56,7 @@ export default {
       },
       fontFamily: {
         oswald: ["Oswald", "sans-serif"],
+        franklin: ["Libre Franklin", "Arial", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
