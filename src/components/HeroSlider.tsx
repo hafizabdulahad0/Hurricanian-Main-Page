@@ -64,7 +64,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full aspect-video overflow-hidden">
+    <div className="relative w-full h-[30vh] sm:h-[40vh] md:h-[50vh] overflow-hidden">
       <style>{`
         .slide {
           position: absolute;
