@@ -64,7 +64,22 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[50vh] overflow-hidden">
+    <div className="relative w-full aspect-video overflow-hidden">
+      <style>{`
+        .slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
+        .slide.active {
+          opacity: 1;
+        }
+      `}</style>
+      
       {slides.map((slide, index) => (
         <div 
           key={slide.id} 
@@ -73,7 +88,7 @@ const HeroSlider = () => {
           <img 
             src={slide.url} 
             alt={slide.alt} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover bg-gray-100 dark:bg-gray-800"
           />
         </div>
       ))}
@@ -81,18 +96,34 @@ const HeroSlider = () => {
       {/* Navigation arrows */}
       <button 
         onClick={handlePrevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#3EA99F]/50 hover:bg-[#3EA99F]/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-20"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-[#3EA99F]/50 hover:bg-[#3EA99F]/80 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center z-20 text-sm sm:text-base"
         aria-label="Previous slide"
       >
         ❮
       </button>
       <button 
         onClick={handleNextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#3EA99F]/50 hover:bg-[#3EA99F]/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-20"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-[#3EA99F]/50 hover:bg-[#3EA99F]/80 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center z-20 text-sm sm:text-base"
         aria-label="Next slide"
       >
         ❯
       </button>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+              index === currentIndex 
+                ? 'bg-[#3EA99F]' 
+                : 'bg-white/50 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

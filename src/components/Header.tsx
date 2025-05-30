@@ -1,9 +1,11 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+
   useEffect(() => {
     // Check for saved user preference
     if (localStorage.getItem('darkMode') === 'enabled') {
@@ -11,6 +13,7 @@ const Header = () => {
       document.documentElement.classList.add('dark');
     }
   }, []);
+
   const toggleDarkMode = () => {
     if (isDarkMode) {
       document.documentElement.classList.remove('dark');
@@ -21,13 +24,23 @@ const Header = () => {
     }
     setIsDarkMode(!isDarkMode);
   };
-  return <header className="bg-[#3EA99F] dark:bg-[#3EA99F] shadow-md sticky top-0 z-50">
+
+  return (
+    <header className="bg-[#3EA99F] dark:bg-[#3EA99F] shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Left side - Logo and Brand (centered on mobile) */}
           <div className="flex items-center justify-center md:justify-start flex-1 md:flex-initial">
-            
-            <span className="text-xl font-bold italic text-white font-franklin">HURRICANIAN</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/ea34d672-9fd9-47c3-a485-acb247e46a47.png" 
+                  alt="Hurricanian Tree Logo" 
+                  className="w-10 h-10 object-contain"
+                />
+              </div>
+              <span className="text-xl font-bold italic text-white font-franklin">HURRICANIAN</span>
+            </div>
           </div>
 
           {/* Center - Desktop Navigation */}
@@ -69,7 +82,8 @@ const Header = () => {
           <Link to="/#contact" className="block py-2 text-white hover:text-[#e6fffd]">Contact Us</Link>
         </div>
       </div>
-    </header>;
+    </header>
+  );
 };
 
 export default Header;

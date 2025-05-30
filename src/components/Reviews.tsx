@@ -1,12 +1,8 @@
 
-import { useState } from 'react';
 import { Star } from 'lucide-react';
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Reviews = () => {
-  const [showAll, setShowAll] = useState(false);
-  
   const reviews = [
     {
       id: 1,
@@ -52,9 +48,6 @@ const Reviews = () => {
     }
   ];
 
-  // Display only the first 4 reviews initially, unless showAll is true
-  const displayedReviews = showAll ? reviews : reviews.slice(0, 4);
-
   const renderStars = (rating: number) => {
     return Array(5).fill(0).map((_, index) => (
       <Star 
@@ -69,38 +62,40 @@ const Reviews = () => {
       <div className="container mx-auto">
         <h2 className="section-title text-gray-800 dark:text-white">Customer Reviews</h2>
         
-        <ScrollArea className="h-96 w-full mt-10 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {displayedReviews.map((review) => (
-              <div key={review.id} className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border-2 border-green-600 dark:border-green-500">
-                <div className="flex items-center mb-4">
-                  <img 
-                    src={review.avatar} 
-                    alt={`${review.name}'s avatar`} 
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h3 className="font-bold text-gray-800 dark:text-white">{review.name}</h3>
-                    <div className="flex mt-1">
-                      {renderStars(review.rating)}
+        <div className="mt-10 px-4">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent>
+              {reviews.map((review) => (
+                <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border-2 border-green-600 dark:border-green-500 h-full">
+                    <div className="flex items-center mb-4">
+                      <img 
+                        src={review.avatar} 
+                        alt={`${review.name}'s avatar`} 
+                        className="w-12 h-12 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <h3 className="font-bold text-gray-800 dark:text-white">{review.name}</h3>
+                        <div className="flex mt-1">
+                          {renderStars(review.rating)}
+                        </div>
+                      </div>
                     </div>
+                    <p className="text-gray-600 dark:text-gray-300">{review.text}</p>
                   </div>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300">{review.text}</p>
-              </div>
-            ))}
-          </div>
-          
-          {/* See More Button */}
-          <div className="flex justify-center mt-8">
-            <Button 
-              onClick={() => setShowAll(!showAll)}
-              className="bg-green-600 hover:bg-green-700 transform transition-transform duration-300 hover:scale-105"
-            >
-              {showAll ? "Show Less" : "See More"}
-            </Button>
-          </div>
-        </ScrollArea>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
       </div>
     </section>
   );

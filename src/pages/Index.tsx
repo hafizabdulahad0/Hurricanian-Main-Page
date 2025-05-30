@@ -6,6 +6,7 @@ import Services from '../components/Services';
 import About from '../components/About';
 import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
+import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 import BubblesBackground from '../components/BubblesBackground';
 
@@ -21,6 +22,7 @@ const Index = () => {
         <About />
         <Reviews />
         <Contact />
+        <Newsletter />
       </main>
       <Footer />
     </div>

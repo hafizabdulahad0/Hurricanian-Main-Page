@@ -1,6 +1,8 @@
-import { useState } from 'react';
+
+import React, { useState } from 'react';
 import { Globe, Diamond, Briefcase, FileSpreadsheet, UtensilsCrossed, Store, Tv, Dog, Building, Smartphone, MessageCircle, Car, Package, CreditCard } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+
 const Services = () => {
   const [showAllServices, setShowAllServices] = useState(false);
 
@@ -164,21 +166,21 @@ const Services = () => {
     borderColor: "border-purple-400"
   }];
 
-  // ... keep existing code (allServices and displayedServices variables)
+  // Show all services - no more toggling
   const allServices = [...availableServices, ...additionalServices];
-  const displayedServices = showAllServices ? allServices : availableServices.slice(0, 5);
-  const displayedComingSoon = showAllServices ? comingSoonServices : comingSoonServices.slice(0, 3);
+
   const handleServiceClick = url => {
     if (url) {
       window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
+
   return <section id="services" className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto">
         <h2 className="section-title text-gray-800 dark:text-white">OUR SERVICES</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-          {displayedServices.map((service, index) => <div key={index} className={`service-card cursor-pointer transition-all duration-300 hover:scale-105 ${service.bgColor} ${service.hoverColor} border-2 ${service.borderColor} shadow-lg hover:shadow-xl active:scale-95 active:shadow-inner`} onClick={() => handleServiceClick(service.url)}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-16">
+          {allServices.map((service, index) => <div key={index} className={`service-card cursor-pointer transition-all duration-300 hover:scale-105 ${service.bgColor} ${service.hoverColor} border-2 ${service.borderColor} shadow-lg hover:shadow-xl active:scale-95 active:shadow-inner`} onClick={() => handleServiceClick(service.url)}>
               <div className="service-icon text-white">
                 {service.icon}
               </div>
@@ -187,16 +189,10 @@ const Services = () => {
             </div>)}
         </div>
         
-        <div className="text-center mb-16">
-          <Button onClick={() => setShowAllServices(!showAllServices)} className="bg-[#3EA99F] hover:bg-[#35908a] dark:bg-[#3EA99F] dark:hover:bg-[#35908a] transition-all duration-300 hover:scale-110 transform active:scale-95">
-            {showAllServices ? "See Less Services" : "See More Services"}
-          </Button>
-        </div>
-        
         <h2 className="section-title text-gray-800 dark:text-white">Coming Soon</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {displayedComingSoon.map((service, index) => <div key={index} className={`coming-soon-card border-2 ${service.borderColor} ${service.bgColor}`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          {comingSoonServices.map((service, index) => <div key={index} className={`coming-soon-card border-2 ${service.borderColor} ${service.bgColor}`}>
               <div className="service-icon text-white/90">
                 {service.icon}
               </div>
@@ -204,17 +200,8 @@ const Services = () => {
               <p className="service-description text-white/80">{service.description}</p>
             </div>)}
         </div>
-
-        <div className="text-center mt-8">
-          <Button onClick={() => setShowAllServices(!showAllServices)} className="bg-[#3EA99F] hover:bg-[#35908a] dark:bg-[#3EA99F] dark:hover:bg-[#35908a] transition-all duration-300 hover:scale-110 transform active:scale-95">
-            {showAllServices ? "See Less Projects" : "See More Projects"}
-          </Button>
-        </div>
-
-        <div className="mt-12 text-center">
-          
-        </div>
       </div>
     </section>;
 };
+
 export default Services;
