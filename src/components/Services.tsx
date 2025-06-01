@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Globe, Diamond, Briefcase, FileSpreadsheet, UtensilsCrossed, Store, Tv, Dog, Building, Smartphone, MessageCircle, Car, Package, CreditCard, Server, Gem, Plane, Megaphone, Apple, ShoppingBag, Newspaper, PawPrint, Home, Users, Monitor, Code, TrendingUp, Factory, Sparkles } from 'lucide-react';
+import { Globe, Diamond, Briefcase, FileSpreadsheet, UtensilsCrossed, Store, Tv, Dog, Building, Smartphone, MessageCircle, Car, Package, CreditCard, Server, Gem, Plane, Megaphone, Apple, ShoppingBag, Newspaper, PawPrint, Home, Users, Monitor, Code, TrendingUp, Factory, Sparkles, Camera } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const Services = () => {
@@ -115,7 +115,7 @@ const Services = () => {
     hoverColor: "hover:bg-lime-500/80",
     borderColor: "border-lime-500/80"
   }, {
-    icon: <Factory className="w-10 h-10" />,
+    icon: <Camera className="w-10 h-10" />,
     title: "HURRICANIAN PRODUCTION",
     description: "MEDIA PRODUCTION",
     url: "https://production.hurricanian.com",
