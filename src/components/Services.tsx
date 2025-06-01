@@ -1,134 +1,133 @@
 
 import React, { useState } from 'react';
-import { Globe, Diamond, Briefcase, FileSpreadsheet, UtensilsCrossed, Store, Tv, Dog, Building, Smartphone, MessageCircle, Car, Package, CreditCard } from 'lucide-react';
+import { Globe, Diamond, Briefcase, FileSpreadsheet, UtensilsCrossed, Store, Tv, Dog, Building, Smartphone, MessageCircle, Car, Package, CreditCard, Server, Gem, Plane, Megaphone, Apple, ShoppingBag, Newspaper, PawPrint, Home, Users, Monitor, Code, TrendingUp, Factory, Sparkles } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const Services = () => {
   const [showAllServices, setShowAllServices] = useState(false);
 
-  // Updated service data with reduced colors for all except HURRICANIAN DOMAINS
+  // Updated service data with unique icons for each service
   const availableServices = [{
-    icon: <Globe className="w-10 h-10" />,
+    icon: <Server className="w-10 h-10" />,
     title: "HURRICANIAN DOMAINS",
     description: "BUY/SELL DOMAIN & HOSTING (BOOK YOUR DOMAIN & SUPER FAST HOSTING TODAY)",
     url: "https://domains.hurricanian.com",
     bgColor: "bg-cyan-600",
-    // Keeping original color for HURRICANIAN DOMAINS
     hoverColor: "hover:bg-cyan-700",
     borderColor: "border-cyan-700"
   }, {
-    icon: <Diamond className="w-10 h-10" />,
+    icon: <Gem className="w-10 h-10" />,
     title: "HURRICANIAN GEMS",
     description: "BUY/SELL GEMSTONES",
     url: "https://gems.hurricanian.com",
-    bgColor: "bg-orange-500/80", // Reduced intensity
+    bgColor: "bg-orange-500/80",
     hoverColor: "hover:bg-orange-600/80",
     borderColor: "border-orange-600/80"
   }, {
-    icon: <Briefcase className="w-10 h-10" />,
+    icon: <Plane className="w-10 h-10" />,
     title: "HURRICANIAN TRAVELS",
     description: "GET YOUR VISA (VISIT - WORK - STUDY - IMMIGRATION)",
     url: "https://travels.hurricanian.com",
-    bgColor: "bg-indigo-400/80", // Reduced intensity
+    bgColor: "bg-indigo-400/80",
     hoverColor: "hover:bg-indigo-500/80",
     borderColor: "border-indigo-500/80"
   }, {
-    icon: <FileSpreadsheet className="w-10 h-10" />,
+    icon: <Megaphone className="w-10 h-10" />,
     title: "HURRICANIAN ADS",
     description: "UPLOAD FREE AD BUY/SELL EVERYTHING ONLINE CLASSIFIED STORE",
     url: "https://ads.hurricanian.com",
-    bgColor: "bg-yellow-500/80", // Reduced intensity
+    bgColor: "bg-yellow-500/80",
     hoverColor: "hover:bg-yellow-600/80",
     borderColor: "border-yellow-600/80"
   }, {
-    icon: <UtensilsCrossed className="w-10 h-10" />,
+    icon: <Apple className="w-10 h-10" />,
     title: "HURRICANIAN FOODS",
     description: "BUY/SELL FOOD PRODUCTS",
     url: "https://foods.hurricanian.com",
-    bgColor: "bg-lime-500/80", // Reduced intensity
+    bgColor: "bg-lime-500/80",
     hoverColor: "hover:bg-lime-600/80",
     borderColor: "border-lime-600/80"
   }, {
-    icon: <Store className="w-10 h-10" />,
+    icon: <ShoppingBag className="w-10 h-10" />,
     title: "HURRICANIAN STORE",
     description: "ONLINE E-COMMERCE STORE",
     url: "https://store.hurricanian.com",
-    bgColor: "bg-purple-400/80", // Reduced intensity
+    bgColor: "bg-purple-400/80",
     hoverColor: "hover:bg-purple-500/80",
     borderColor: "border-purple-500/80"
   }, {
-    icon: <Tv className="w-10 h-10" />,
+    icon: <Newspaper className="w-10 h-10" />,
     title: "HURRICANIAN NEWS",
     description: "DAILY NEWS ONLINE",
     url: "https://news.hurricanian.com",
-    bgColor: "bg-teal-500/80", // Reduced intensity
+    bgColor: "bg-teal-500/80",
     hoverColor: "hover:bg-teal-600/80",
     borderColor: "border-teal-600/80"
   }, {
-    icon: <Dog className="w-10 h-10" />,
+    icon: <PawPrint className="w-10 h-10" />,
     title: "HURRICANIAN LIVESTOCKS",
     description: "BUY/SELL ANIMALS",
     url: "https://livestock.hurricanian.com",
-    bgColor: "bg-amber-700/80", // Reduced intensity
+    bgColor: "bg-amber-700/80",
     hoverColor: "hover:bg-amber-800/80",
     borderColor: "border-amber-800/80"
   }, {
-    icon: <Building className="w-10 h-10" />,
+    icon: <Home className="w-10 h-10" />,
     title: "HURRICANIAN ENTERPRISES",
     description: "BUY/SELL PROPERTY",
     url: "https://enterprises.hurricanian.com",
-    bgColor: "bg-rose-500/80", // Reduced intensity
+    bgColor: "bg-rose-500/80",
     hoverColor: "hover:bg-rose-600/80",
     borderColor: "border-rose-600/80"
   }];
 
-  // Additional services with reduced colors
+  // Additional services with unique icons
   const additionalServices = [{
-    icon: <Building className="w-10 h-10" />,
+    icon: <Users className="w-10 h-10" />,
     title: "HURRICANIAN ASSOCIATES",
     description: "PROFESSIONAL SERVICES",
     url: "https://associates.hurricanian.com",
-    bgColor: "bg-gray-800/80", // Reduced intensity
+    bgColor: "bg-gray-800/80",
     hoverColor: "hover:bg-gray-900/80",
     borderColor: "border-gray-900/80"
   }, {
-    icon: <Tv className="w-10 h-10" />,
+    icon: <Monitor className="w-10 h-10" />,
     title: "HURRICANIAN TV",
     description: "ENTERTAINMENT",
     url: "https://tv.hurricanian.com",
-    bgColor: "bg-fuchsia-500/80", // Reduced intensity
+    bgColor: "bg-fuchsia-500/80",
     hoverColor: "hover:bg-fuchsia-600/80",
     borderColor: "border-fuchsia-600/80"
   }, {
-    icon: <Globe className="w-10 h-10" />,
+    icon: <Code className="w-10 h-10" />,
     title: "HURRICANIAN TECHNOLOGIES",
     description: "TECH SERVICES",
     url: "https://technologies.hurricanian.com",
-    bgColor: "bg-blue-600/80", // Reduced intensity
+    bgColor: "bg-blue-600/80",
     hoverColor: "hover:bg-blue-700/80",
     borderColor: "border-blue-700/80"
   }, {
-    icon: <Briefcase className="w-10 h-10" />,
+    icon: <TrendingUp className="w-10 h-10" />,
     title: "HURRICANIAN TRADERS",
     description: "TRADING SERVICES",
     url: "https://traders.hurricanian.com",
-    bgColor: "bg-lime-400/80", // Reduced intensity
+    bgColor: "bg-lime-400/80",
     hoverColor: "hover:bg-lime-500/80",
     borderColor: "border-lime-500/80"
   }, {
-    icon: <FileSpreadsheet className="w-10 h-10" />,
+    icon: <Factory className="w-10 h-10" />,
     title: "HURRICANIAN PRODUCTION",
     description: "MEDIA PRODUCTION",
     url: "https://production.hurricanian.com",
-    bgColor: "bg-orange-600/80", // Reduced intensity
+    bgColor: "bg-orange-600/80",
     hoverColor: "hover:bg-orange-700/80",
     borderColor: "border-orange-700/80"
   }, {
-    icon: <Diamond className="w-10 h-10" />,
+    icon: <Sparkles className="w-10 h-10" />,
     title: "PINK SALT",
     description: "PREMIUM SALT PRODUCTS",
     url: "https://salt.hurricanian.com",
-    bgColor: "bg-pink-500/80", // Reduced intensity
+    bgColor: "bg-pink-500/80",
     hoverColor: "hover:bg-pink-600/80",
     borderColor: "border-pink-600/80"
   }];
