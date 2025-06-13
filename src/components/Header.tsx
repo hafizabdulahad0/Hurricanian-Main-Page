@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Home, Briefcase, User, Phone } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,6 +26,14 @@ const Header = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="bg-[#3EA99F] dark:bg-[#3EA99F] shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3">
@@ -45,10 +54,34 @@ const Header = () => {
 
           {/* Center - Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 flex-1 justify-center">
-            <Link to="/" className="text-white hover:text-[#e6fffd] transition-colors duration-300">Home</Link>
-            <Link to="/#services" className="text-white hover:text-[#e6fffd] transition-colors duration-300">Our Services</Link>
-            <Link to="/#about" className="text-white hover:text-[#e6fffd] transition-colors duration-300">About Us</Link>
-            <Link to="/#contact" className="text-white hover:text-[#e6fffd] transition-colors duration-300">Contact Us</Link>
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center space-x-2 text-white hover:text-[#e6fffd] transition-colors duration-300"
+            >
+              <Home className="w-4 h-4" />
+              <span>Home</span>
+            </button>
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="flex items-center space-x-2 text-white hover:text-[#e6fffd] transition-colors duration-300"
+            >
+              <Briefcase className="w-4 h-4" />
+              <span>Our Services</span>
+            </button>
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="flex items-center space-x-2 text-white hover:text-[#e6fffd] transition-colors duration-300"
+            >
+              <User className="w-4 h-4" />
+              <span>About Us</span>
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="flex items-center space-x-2 text-white hover:text-[#e6fffd] transition-colors duration-300"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Contact Us</span>
+            </button>
           </nav>
 
           {/* Right side - Dark mode toggle and mobile menu */}
@@ -76,10 +109,37 @@ const Header = () => {
       {/* Mobile Navigation */}
       <div className={`md:hidden bg-[#3EA99F] dark:bg-[#3EA99F] ${isMenuOpen ? 'block' : 'hidden'}`}>
         <div className="container mx-auto px-4 py-2">
-          <Link to="/" className="block py-2 text-white hover:text-[#e6fffd]">Home</Link>
-          <Link to="/#services" className="block py-2 text-white hover:text-[#e6fffd]">Our Services</Link>
-          <Link to="/#about" className="block py-2 text-white hover:text-[#e6fffd]">About Us</Link>
-          <Link to="/#contact" className="block py-2 text-white hover:text-[#e6fffd]">Contact Us</Link>
+          <button 
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsMenuOpen(false);
+            }}
+            className="flex items-center space-x-2 py-2 text-white hover:text-[#e6fffd] w-full text-left"
+          >
+            <Home className="w-4 h-4" />
+            <span>Home</span>
+          </button>
+          <button 
+            onClick={() => scrollToSection('services')}
+            className="flex items-center space-x-2 py-2 text-white hover:text-[#e6fffd] w-full text-left"
+          >
+            <Briefcase className="w-4 h-4" />
+            <span>Our Services</span>
+          </button>
+          <button 
+            onClick={() => scrollToSection('about')}
+            className="flex items-center space-x-2 py-2 text-white hover:text-[#e6fffd] w-full text-left"
+          >
+            <User className="w-4 h-4" />
+            <span>About Us</span>
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className="flex items-center space-x-2 py-2 text-white hover:text-[#e6fffd] w-full text-left"
+          >
+            <Phone className="w-4 h-4" />
+            <span>Contact Us</span>
+          </button>
         </div>
       </div>
     </header>

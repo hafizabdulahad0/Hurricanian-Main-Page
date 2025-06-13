@@ -16,12 +16,20 @@ const Index = () => {
       <BubblesBackground />
       <Header />
       <main>
-        <HeroSlider />
-        <Hero />
-        <Services />
-        <About />
+        <div id="home">
+          <HeroSlider />
+          <Hero />
+        </div>
+        <div id="services">
+          <Services />
+        </div>
+        <div id="about">
+          <About />
+        </div>
         <Reviews />
-        <Contact />
+        <div id="contact">
+          <Contact />
+        </div>
         <Newsletter />
       </main>
       <Footer />
