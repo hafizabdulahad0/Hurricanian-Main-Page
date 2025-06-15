@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Star, Trash2, Shield } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -101,18 +102,19 @@ const Reviews = () => {
     <section className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
       <div className="container mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="section-title text-gray-800 dark:text-white">Customer Reviews</h2>
+          <div className="flex-1"></div>
+          <h2 className="section-title text-gray-800 dark:text-white text-center">Customer Reviews</h2>
           
           {/* Admin Toggle */}
-          <Button
-            variant={isAdminMode ? "destructive" : "outline"}
-            size="sm"
-            onClick={handleAdminToggle}
-            className="flex items-center gap-2"
-          >
-            <Shield className="w-4 h-4" />
-            {isAdminMode ? "Exit Admin" : "Admin Mode"}
-          </Button>
+          <div className="flex-1 flex justify-end">
+            <Button
+              variant={isAdminMode ? "destructive" : "outline"}
+              size="sm"
+              onClick={handleAdminToggle}
+            >
+              <Shield className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
 
         {/* Password Dialog */}
