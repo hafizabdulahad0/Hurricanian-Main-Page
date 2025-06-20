@@ -74,7 +74,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[30vh] sm:h-[40vh] md:h-[50vh] overflow-hidden">
+    <div className="relative w-full h-[180px] sm:h-[220px] md:h-[400px] lg:h-[500px] overflow-hidden -mt-0 -mb-0">
       <style>{`
         .slide {
           position: absolute;
@@ -98,7 +98,7 @@ const HeroSlider = () => {
           <img 
             src={slide.url} 
             alt={slide.alt} 
-            className="w-full h-full object-cover object-center bg-gray-100 dark:bg-gray-800"
+            className="w-full h-full object-cover object-center sm:object-contain sm:bg-white sm:dark:bg-gray-800"
           />
         </div>
       ))}
