@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Briefcase, User, Phone } from 'lucide-react';
+import { Home, Briefcase, User, Phone, Moon, Sun } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -88,12 +89,14 @@ const Header = () => {
           <div className="flex items-center justify-end flex-1 md:flex-initial">
             {/* Dark mode toggle */}
             <div className="mr-4">
-              <input type="checkbox" id="darkmode-switch" className="toggle-input" checked={isDarkMode} onChange={toggleDarkMode} />
-              <label htmlFor="darkmode-switch" className="toggle-label">
-                <span className="toggle-icon moon">🌙</span>
-                <span className="toggle-icon sun">☀️</span>
-                <span className="toggle-ball"></span>
-              </label>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleDarkMode}
+                className="text-white hover:bg-white/10"
+              >
+                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </Button>
             </div>
 
             {/* Mobile menu button */}

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Star, Upload, User } from 'lucide-react';
+import { Star, Upload, User, Share } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -82,6 +82,37 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
     }
   };
 
+  const handleShare = async () => {
+    const reviewSectionUrl = `${window.location.origin}${window.location.pathname}#review-form`;
+    
+    try {
+      if (navigator.share && navigator.canShare) {
+        await navigator.share({
+          title: 'Submit a Review - Hurricanian',
+          text: 'Share your experience with Hurricanian services!',
+          url: reviewSectionUrl,
+        });
+        toast({
+          title: "Shared successfully!",
+          description: "Thank you for sharing our review form.",
+        });
+      } else {
+        // Fallback to clipboard
+        await navigator.clipboard.writeText(reviewSectionUrl);
+        toast({
+          title: "Link copied!",
+          description: "Review form link has been copied to your clipboard.",
+        });
+      }
+    } catch (error) {
+      // Final fallback - show the URL
+      toast({
+        title: "Share this link",
+        description: reviewSectionUrl,
+      });
+    }
+  };
+
   const renderStars = () => {
     return Array(5).fill(0).map((_, index) => {
       const starValue = index + 1;
@@ -102,7 +133,18 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border-2 border-green-600 dark:border-green-500">
+    <div id="review-form" className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border-2 border-green-600 dark:border-green-500 relative">
+      {/* Share Button */}
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={handleShare}
+        className="absolute top-4 right-4 w-8 h-8"
+        title="Share review form"
+      >
+        <Share className="w-4 h-4" />
+      </Button>
+
       <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
         Submit Your Review
       </h3>

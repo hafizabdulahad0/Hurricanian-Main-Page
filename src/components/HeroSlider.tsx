@@ -4,28 +4,38 @@ import { useState, useEffect } from 'react';
 const slides = [
   { 
     id: 1, 
-    url: '/lovable-uploads/1c9cc78b-0878-4fd4-af13-04ee4380a53a.png', 
-    alt: 'Hurricanian Enterprises - Property Services' 
+    url: '/lovable-uploads/ed9e0ff4-704b-4779-9c7b-5c87e6600be7.png', 
+    alt: 'Business Leadership - Hurricanian Services' 
   },
   { 
     id: 2, 
-    url: '/lovable-uploads/65e2c288-1fdc-484f-8f61-5d5af426711e.png', 
-    alt: 'Hurricanian Gems - Gemstone Services' 
+    url: '/lovable-uploads/a423d0c1-5623-4084-b267-137806ae7df1.png', 
+    alt: 'Certified & Natural Emeralds - Hurricanian Gems' 
   },
   { 
     id: 3, 
-    url: '/lovable-uploads/f9961fd6-c7b1-49f9-9b95-bc30186c72d1.png', 
-    alt: 'Hurricanian LiveStock - Animal Trading' 
+    url: '/lovable-uploads/3a401a30-b537-4244-9a75-439ce3c97361.png', 
+    alt: 'Latest News & Updates - Hurricanian' 
   },
   { 
     id: 4, 
-    url: '/lovable-uploads/ee97023b-6804-4f8b-9ef0-1bd438a331cc.png', 
-    alt: 'Hurricanian Pink Salt - Salt Products' 
+    url: '/lovable-uploads/9e4af772-a8f1-40bf-a167-10fe111a6d7a.png', 
+    alt: 'Natural Salt Products - Hurricanian Pink Salt' 
   },
   { 
     id: 5, 
-    url: '/lovable-uploads/c57a64f2-cf18-41f1-9c0e-553f47530e9d.png', 
-    alt: 'Hurricanian Technologies - Tech Services' 
+    url: '/lovable-uploads/ae7d13d0-8c02-4abb-8ed0-8c8b586db881.png', 
+    alt: 'Website Development - Hurricanian Technologies' 
+  },
+  { 
+    id: 6, 
+    url: '/lovable-uploads/11fe3f24-940f-479e-8c30-8f9a113b945c.png', 
+    alt: 'Global Trading & Logistics - Hurricanian' 
+  },
+  { 
+    id: 7, 
+    url: '/lovable-uploads/3872b208-6fa1-47f0-935a-d5fbd42fb6ad.png', 
+    alt: 'Visa Consultant Services - Hurricanian' 
   },
 ];
 
@@ -88,7 +98,7 @@ const HeroSlider = () => {
           <img 
             src={slide.url} 
             alt={slide.alt} 
-            className="w-full h-full object-cover bg-gray-100 dark:bg-gray-800"
+            className="w-full h-full object-cover object-center bg-gray-100 dark:bg-gray-800"
           />
         </div>
       ))}
