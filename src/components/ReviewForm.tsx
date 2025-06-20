@@ -216,9 +216,9 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
           />
         </div>
 
-        <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
-          Submit Review
-        </Button>
+       <Button type="submit" className="w-full" style={{ backgroundColor: "#3ea99f" }}>
+  Submit Review
+</Button>
       </form>
     </div>
   );
