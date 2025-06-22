@@ -1,4 +1,3 @@
-// components/ReviewForm.tsx
 
 import React, { useState, useEffect } from 'react';
 import { Star, Upload, User, Share } from 'lucide-react';
@@ -6,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useReviews } from '@/hooks/useReviews';
 
 interface ReviewFormData {
   name: string;
@@ -14,7 +14,8 @@ interface ReviewFormData {
   avatar?: string;
 }
 
-const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormData) => void }) => {
+const ReviewForm = () => {
+  const { addReview } = useReviews();
   const [formData, setFormData] = useState<ReviewFormData>({
     name: '',
     rating: 0,
@@ -22,6 +23,7 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
     avatar: ''
   });
   const [hoveredRating, setHoveredRating] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   // Scroll to this section if #review-form is in URL
@@ -36,7 +38,7 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name.trim() || !formData.text.trim() || formData.rating === 0) {
@@ -48,37 +50,21 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
       return;
     }
 
-    const existingReviews = JSON.parse(localStorage.getItem('userReviews') || '[]');
-    const userAlreadyReviewed = existingReviews.some((review: any) =>
-      review.name.toLowerCase() === formData.name.toLowerCase()
-    );
+    setIsSubmitting(true);
 
-    if (userAlreadyReviewed) {
-      toast({
-        title: "Review already submitted",
-        description: "You have already submitted a review with this name.",
-        variant: "destructive"
-      });
-      return;
+    try {
+      const reviewToSubmit = {
+        ...formData,
+        avatar: formData.avatar || `https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=100&h=100`
+      };
+
+      await addReview(reviewToSubmit);
+      setFormData({ name: '', rating: 0, text: '', avatar: '' });
+    } catch (error) {
+      // Error handling is done in the hook
+    } finally {
+      setIsSubmitting(false);
     }
-
-    const newReview = {
-      ...formData,
-      id: Date.now(),
-      avatar: formData.avatar || `https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=100&h=100`
-    };
-
-    const updatedReviews = [...existingReviews, newReview];
-    localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
-
-    onReviewSubmit(newReview);
-
-    setFormData({ name: '', rating: 0, text: '', avatar: '' });
-
-    toast({
-      title: "Review submitted successfully!",
-      description: "Thank you for your feedback.",
-    });
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -174,6 +160,7 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
             onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
             placeholder="Your name"
             className="w-full"
+            disabled={isSubmitting}
           />
         </div>
 
@@ -212,6 +199,7 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
                 accept="image/*"
                 onChange={handleFileUpload}
                 className="hidden"
+                disabled={isSubmitting}
               />
             </label>
           </div>
@@ -227,6 +215,7 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
             placeholder="Write your review here..."
             rows={4}
             className="w-full"
+            disabled={isSubmitting}
           />
         </div>
 
@@ -234,8 +223,9 @@ const ReviewForm = ({ onReviewSubmit }: { onReviewSubmit: (review: ReviewFormDat
           type="submit"
           className="w-full text-white hover:opacity-90"
           style={{ backgroundColor: "#3ea99f" }}
+          disabled={isSubmitting}
         >
-          Submit Review
+          {isSubmitting ? "Submitting..." : "Submit Review"}
         </Button>
       </form>
     </div>

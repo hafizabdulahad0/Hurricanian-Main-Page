@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Star, Trash2, Shield } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
@@ -25,9 +25,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import ReviewForm from './ReviewForm';
+import { useReviews } from '@/hooks/useReviews';
 
 const Reviews = () => {
-  const [allReviews, setAllReviews] = useState([]);
+  const { reviews, loading, deleteReview } = useReviews();
   const [isAdminMode, setIsAdminMode] = useState(false);
   const [showPasswordDialog, setShowPasswordDialog] = useState(false);
   const [password, setPassword] = useState('');
@@ -35,33 +36,18 @@ const Reviews = () => {
 
   const ADMIN_PASSWORD = "AliSherazi";
 
-  useEffect(() => {
-    // Load user reviews from localStorage
-    const userReviews = JSON.parse(localStorage.getItem('userReviews') || '[]');
-    setAllReviews(userReviews);
-  }, []);
-
-  const handleNewReview = (review: any) => {
-    setAllReviews(prev => [...prev, review]);
-  };
-
-  const handleDeleteReview = (reviewId: number) => {
-    const updatedReviews = allReviews.filter((review: any) => review.id !== reviewId);
-    setAllReviews(updatedReviews);
-    localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
-    
-    toast({
-      title: "Review deleted",
-      description: "The review has been successfully removed.",
-    });
+  const handleDeleteReview = async (reviewId: string) => {
+    try {
+      await deleteReview(reviewId);
+    } catch (error) {
+      // Error handling is done in the hook
+    }
   };
 
   const handleAdminToggle = () => {
     if (isAdminMode) {
-      // Exit admin mode
       setIsAdminMode(false);
     } else {
-      // Prompt for password to enter admin mode
       setShowPasswordDialog(true);
     }
   };
@@ -97,6 +83,19 @@ const Reviews = () => {
       />
     ));
   };
+
+  if (loading) {
+    return (
+      <section className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <h2 className="section-title text-gray-800 dark:text-white">Customer Reviews</h2>
+            <p className="text-gray-600 dark:text-gray-300 mt-4">Loading reviews...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
@@ -146,7 +145,7 @@ const Reviews = () => {
           </DialogContent>
         </Dialog>
         
-        {allReviews.length > 0 ? (
+        {reviews.length > 0 ? (
           <div className="mt-10 px-4">
             <Carousel
               opts={{
@@ -156,7 +155,7 @@ const Reviews = () => {
               className="w-full max-w-5xl mx-auto"
             >
               <CarouselContent>
-                {allReviews.map((review) => (
+                {reviews.map((review) => (
                   <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border-2 border-green-600 dark:border-green-500 h-full relative">
                       {/* Admin Delete Button */}
@@ -221,7 +220,7 @@ const Reviews = () => {
 
         {/* Review Form Section */}
         <div className="mt-16 max-w-2xl mx-auto">
-          <ReviewForm onReviewSubmit={handleNewReview} />
+          <ReviewForm />
         </div>
       </div>
     </section>
